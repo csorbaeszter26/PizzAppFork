@@ -2,17 +2,21 @@ package pizzapp;
 
 public class PizzApp extends javax.swing.JFrame {
     
-    double meretSzorzo = 1; //
+    double meretSzorzo = 1; //32cm
+    
+    int alapAr = -1; //-1 jelentése: nincs ára a pizzának. ha egyik ifbe se lép be, akkor ezt írja ki, nehát valami nem oké!
+    int extrak, db;
+    
 
     public PizzApp() {
         initComponents();  /*ezután kell mert ez indítja a programot*/
         
         /*1. létrehoizunk egy változót, hogypl mi az egyik pizzának az alapára, itt a 2-es indexen lévő pizzának az alapára kellene*/
-        int alapAr = 1750;
+        alapAr = 1750;
         /*méret szorzót fel kell venni*/
         meretSzorzo = 1;
         
-        int db = 1;
+        db = 1;
         
         int extra1 = 0;
         int extra2 = 0;
@@ -273,7 +277,9 @@ public class PizzApp extends javax.swing.JFrame {
                 
         //1. választott pizza alapára:
         /*1. létrehoizunk egy változót, hogy pl mi az egyik pizzának az alapára, itt a 2-es indexen lévő pizzának az alapára kellene*/
-        int alapAr = -1; //-1 jelentése: nincs ára a pizzának. ha egyik ifbe se lép be, akkor ezt írja ki, nehát valami nem oké!
+        
+        
+//-1 jelentése: nincs ára a pizzának. ha egyik ifbe se lép be, akkor ezt írja ki, nehát valami nem oké!
         //hozzáírom a 2.  feladatrész miatt:
         if(pizzaIndex == 0){
             alapAr = 1580;
@@ -288,7 +294,7 @@ public class PizzApp extends javax.swing.JFrame {
         /*méret szorzót fel kell venni*/
         
         
-        int db = 1;
+        db = 1;
         
         int extra1 = 0;
         int extra2 = 0;
@@ -322,7 +328,12 @@ public class PizzApp extends javax.swing.JFrame {
         //=> lilaszínűvé kell tenni, ollyan helyen maikívülvan a gombokon
         //doubleket ki kell előlük törölni h mind lila legyen!
         
-        meretSzorzo = 0.75;
+        meretSzorzo = .75;
+        
+        //ezeknél is lilává kell tenni tehát ki kell tenni fenntre
+        double vegsoAr = alapAr * meretSzorzo + extrak;
+        vegsoAr *= db;
+        lblAr.setText(vegsoAr + ""); 
     }//GEN-LAST:event_rdbMeret25ItemStateChanged
 
     private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
