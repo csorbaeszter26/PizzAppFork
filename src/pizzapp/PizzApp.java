@@ -3,7 +3,31 @@ package pizzapp;
 public class PizzApp extends javax.swing.JFrame {
 
     public PizzApp() {
-        initComponents();
+        initComponents();  /*ezután kell mert ez indítja a programot*/
+        
+        /*létrehoizunk egy változót, hogypl mi az egyik pizzának az alapára, itt a 2-es indexen lévő pizzának az alapára kellene*/
+        int alapAr2 = 1750;
+        /*méret szorzót fel kell venni*/
+        double meretSzorzo = 1;
+        
+        int db = 1;
+        
+        int extra1 = 0;
+        int extra2 = 0;
+        int extra3 = 0;
+        int extrak = extra1 + extra2 + extra3;
+        
+        /*kéne nekünk egy végső ár is. Ha inttel írom, akkor nem lesz kompatibilis az előbbi double változóval. inteket nem tudjuk berakni doublebe. Ennek tehát doublenek kell lennie!!!*/
+        /*itt most utána az történik hogy: */
+        double vegsoAr = alapAr2 * meretSzorzo + extrak;
+        /*beszorzom db számmal:*/
+        vegsoAr *= db;
+        
+        lblAr.setText(vegsoAr + ""); /*ezt beállítjuk hogy induláskor ezt a szöveget lássuk a 0 helyett*/
+        /*itt utána ""be rakom hogy string legyen belőle*/
+        
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -79,7 +103,7 @@ public class PizzApp extends javax.swing.JFrame {
         lblFizFt.setText("Ft");
 
         lblAr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAr.setText("1750");
+        lblAr.setText("0");
 
         numDb.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
 
