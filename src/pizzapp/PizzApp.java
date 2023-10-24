@@ -1,11 +1,13 @@
 package pizzapp;
 
+import javax.swing.event.ChangeListener;
+
 public class PizzApp extends javax.swing.JFrame {
     
     double meretSzorzo = 1; //32cm
     
     int alapAr = -1; //-1 jelentése: nincs ára a pizzának. ha egyik ifbe se lép be, akkor ezt írja ki, nehát valami nem oké!
-    int extrak, db;
+    int extrak, db, extra1, extra2, extra3, dbSzorzo;
     double vegsoAr;
     
 
@@ -19,9 +21,9 @@ public class PizzApp extends javax.swing.JFrame {
         
         db = 1;
         
-        int extra1 = 0;
-        int extra2 = 0;
-        int extra3 = 0;
+        extra1 = 0;
+        extra2 = 0;
+        extra3 = 0;
         extrak = extra1 + extra2 + extra3;
         
         /*kéne nekünk egy végső ár is. Ha inttel írom, akkor nem lesz kompatibilis az előbbi double változóval. inteket nem tudjuk berakni doublebe. Ennek tehát doublenek kell lennie!!!*/
@@ -124,6 +126,11 @@ public class PizzApp extends javax.swing.JFrame {
         lblAr.setText("0");
 
         numDb.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+        numDb.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                numDbStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlFizetendoLayout = new javax.swing.GroupLayout(pnlFizetendo);
         pnlFizetendo.setLayout(pnlFizetendoLayout);
@@ -158,10 +165,25 @@ public class PizzApp extends javax.swing.JFrame {
         pnlExtrak.setBorder(javax.swing.BorderFactory.createTitledBorder("Extrák"));
 
         chbSajt.setText("sajt");
+        chbSajt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbSajtActionPerformed(evt);
+            }
+        });
 
         chbHagyma.setText("hagyma");
+        chbHagyma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbHagymaActionPerformed(evt);
+            }
+        });
 
         chbAnanasz.setText("ananász");
+        chbAnanasz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbAnanaszActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlExtrakLayout = new javax.swing.GroupLayout(pnlExtrak);
         pnlExtrak.setLayout(pnlExtrakLayout);
@@ -188,6 +210,11 @@ public class PizzApp extends javax.swing.JFrame {
 
         txaOsszesito.setColumns(20);
         txaOsszesito.setRows(5);
+        txaOsszesito.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txaOsszesitoPropertyChange(evt);
+            }
+        });
         jScrollPane1.setViewportView(txaOsszesito);
 
         btnRendel.setText("Megrendelem");
@@ -290,9 +317,9 @@ public class PizzApp extends javax.swing.JFrame {
         
         db = 1;
         
-        int extra1 = 0;
-        int extra2 = 0;
-        int extra3 = 0;
+        extra1 = 0;
+        extra2 = 0;
+        extra3 = 0;
         extrak = extra1 + extra2 + extra3;
         
         /*kéne nekünk egy végső ár is. Ha inttel írom, akkor nem lesz kompatibilis az előbbi double változóval. inteket nem tudjuk berakni doublebe. Ennek tehát doublenek kell lennie!!!*/
@@ -336,7 +363,76 @@ public class PizzApp extends javax.swing.JFrame {
 
     private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
         meretSzorzo = 1;
+        
+        szamolasEsKiiras();
     }//GEN-LAST:event_rdbMeret32ItemStateChanged
+
+    private void chbSajtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbSajtActionPerformed
+        
+        if (chbSajt.isSelected()){
+            extra1 += 200;
+                  
+        }else{
+            extra1 -= 200;
+        }
+        
+        extrak = extra1 + extra2 + extra3;
+        szamolasEsKiiras();
+    }//GEN-LAST:event_chbSajtActionPerformed
+
+    private void chbHagymaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbHagymaActionPerformed
+        if (chbHagyma.isSelected()){
+            extra2 += 200;
+                  
+        }else{
+            extra2 -= 200;
+        }
+        
+        extrak = extra1 + extra2 + extra3;
+        szamolasEsKiiras();
+    }//GEN-LAST:event_chbHagymaActionPerformed
+
+    private void chbAnanaszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAnanaszActionPerformed
+        if (chbAnanasz.isSelected()){
+            extra3 += 200;
+                  
+        }else{
+            extra3 -= 200;
+        }
+        
+        extrak = extra1 + extra2 + extra3;
+        szamolasEsKiiras();
+    }//GEN-LAST:event_chbAnanaszActionPerformed
+
+    private void numDbStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_numDbStateChanged
+        int dbIndex = numDb.getModel().getValue().hashCode();
+        if (dbIndex == 1){
+            db=1;
+        }else if (dbIndex == 2){
+            db=2;
+        }else if (dbIndex == 3){
+            db=3;
+        }else if (dbIndex == 4){
+            db=4;
+        }else if (dbIndex == 5){
+            db=5;
+        }
+    
+        szamolasEsKiiras();
+    }//GEN-LAST:event_numDbStateChanged
+
+    private void txaOsszesitoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txaOsszesitoPropertyChange
+        
+        if (rdbMeret25.isSelected()){
+            String meret1;
+            meret1 = rdbMeret25.getText();
+            
+            //setText("25cm, ");
+        }
+        
+                
+                
+    }//GEN-LAST:event_txaOsszesitoPropertyChange
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

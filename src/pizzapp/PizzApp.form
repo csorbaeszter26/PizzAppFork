@@ -254,6 +254,9 @@
               <SpinnerModel initial="1" maximum="5" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="numDbStateChanged"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -298,16 +301,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="sajt"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chbSajtActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="chbHagyma">
           <Properties>
             <Property name="text" type="java.lang.String" value="hagyma"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chbHagymaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="chbAnanasz">
           <Properties>
             <Property name="text" type="java.lang.String" value="anan&#xe1;sz"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chbAnanaszActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -323,6 +335,9 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
+          <Events>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="txaOsszesitoPropertyChange"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
