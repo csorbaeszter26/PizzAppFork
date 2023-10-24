@@ -6,6 +6,7 @@ public class PizzApp extends javax.swing.JFrame {
     
     int alapAr = -1; //-1 jelentése: nincs ára a pizzának. ha egyik ifbe se lép be, akkor ezt írja ki, nehát valami nem oké!
     int extrak, db;
+    double vegsoAr;
     
 
     public PizzApp() {
@@ -21,20 +22,13 @@ public class PizzApp extends javax.swing.JFrame {
         int extra1 = 0;
         int extra2 = 0;
         int extra3 = 0;
-        int extrak = extra1 + extra2 + extra3;
+        extrak = extra1 + extra2 + extra3;
         
         /*kéne nekünk egy végső ár is. Ha inttel írom, akkor nem lesz kompatibilis az előbbi double változóval. inteket nem tudjuk berakni doublebe. Ennek tehát doublenek kell lennie!!!*/
         /*itt most utána az történik hogy: */
-        double vegsoAr = alapAr * meretSzorzo + extrak;
         /*beszorzom db számmal:*/
-        vegsoAr *= db;
         
-        lblAr.setText(vegsoAr + ""); /*ezt beállítjuk hogy induláskor ezt a szöveget lássuk a 0 helyett*/
-        /*itt utána ""be rakom hogy string legyen belőle*/
-        //ennyi, ez által induláskor számol.
-        //ez a kód am nem jó , madj leírjuk jól is
-        
-        //2. combobox ha változik, változik az ár a labelben: ugy, hogy a combobox actionperfbe írom
+        szamolasEsKiiras();
         
         
     }
@@ -299,17 +293,13 @@ public class PizzApp extends javax.swing.JFrame {
         int extra1 = 0;
         int extra2 = 0;
         int extra3 = 0;
-        int extrak = extra1 + extra2 + extra3;
+        extrak = extra1 + extra2 + extra3;
         
         /*kéne nekünk egy végső ár is. Ha inttel írom, akkor nem lesz kompatibilis az előbbi double változóval. inteket nem tudjuk berakni doublebe. Ennek tehát doublenek kell lennie!!!*/
         /*itt most utána az történik hogy: */
-        double vegsoAr = alapAr * meretSzorzo + extrak;
         /*beszorzom db számmal:*/
-        vegsoAr *= db;
         
-        lblAr.setText(vegsoAr + ""); /*ezt beállítjuk hogy induláskor ezt a szöveget lássuk a 0 helyett*/
-        /*itt utána ""be rakom hogy string legyen belőle*/
-        //ennyi, ez által induláskor számol.
+        szamolasEsKiiras();
 
         
         
@@ -330,11 +320,19 @@ public class PizzApp extends javax.swing.JFrame {
         
         meretSzorzo = .75;
         
-        //ezeknél is lilává kell tenni tehát ki kell tenni fenntre
-        double vegsoAr = alapAr * meretSzorzo + extrak;
-        vegsoAr *= db;
-        lblAr.setText(vegsoAr + ""); 
+        
+        szamolasEsKiiras();
     }//GEN-LAST:event_rdbMeret25ItemStateChanged
+
+    private void szamolasEsKiiras() {
+        //ezeknél is lilává kell tenni tehát ki kell tenni fenntre
+        
+        vegsoAr = alapAr * meretSzorzo + extrak;
+        vegsoAr *= db;
+        lblAr.setText(vegsoAr + "");
+        
+        //eza 3 sor tök sok helyen van és ugyanaz => metódusba kell rakni, hogy csak a metódust kelljen meghívni
+    }
 
     private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
         meretSzorzo = 1;
