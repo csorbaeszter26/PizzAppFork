@@ -6,7 +6,7 @@ public class PizzApp extends javax.swing.JFrame {
         initComponents();  /*ezután kell mert ez indítja a programot*/
         
         /*1. létrehoizunk egy változót, hogypl mi az egyik pizzának az alapára, itt a 2-es indexen lévő pizzának az alapára kellene*/
-        int alapAr2 = 1750;
+        int alapAr = 1750;
         /*méret szorzót fel kell venni*/
         double meretSzorzo = 1;
         
@@ -19,7 +19,7 @@ public class PizzApp extends javax.swing.JFrame {
         
         /*kéne nekünk egy végső ár is. Ha inttel írom, akkor nem lesz kompatibilis az előbbi double változóval. inteket nem tudjuk berakni doublebe. Ennek tehát doublenek kell lennie!!!*/
         /*itt most utána az történik hogy: */
-        double vegsoAr = alapAr2 * meretSzorzo + extrak;
+        double vegsoAr = alapAr * meretSzorzo + extrak;
         /*beszorzom db számmal:*/
         vegsoAr *= db;
         
@@ -247,7 +247,60 @@ public class PizzApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdValaszthatoPizzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValaszthatoPizzakActionPerformed
-        // TODO add your handling code here:
+        //bemásoltam az elejéből ide
+        
+        //2. combobox ha változik, változik az ár a labelben: ugy, hogy a combobox actionperfbe írom
+        // megkéne határozni h milyen alapárú pizzát hozottt a user:
+        //index alapján hozzá kell rendlni
+        //getselected indexet kell lekérdezni, hogy lássuk mi van választtva
+        
+        int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
+        
+       
+                
+                
+                
+        //1. választott pizza alapára:
+        /*1. létrehoizunk egy változót, hogy pl mi az egyik pizzának az alapára, itt a 2-es indexen lévő pizzának az alapára kellene*/
+        int alapAr = -1; //-1 jelentése: nincs ára a pizzának. ha egyik ifbe se lép be, akkor ezt írja ki, nehát valami nem oké!
+        //hozzáírom a 2.  feladatrész miatt:
+        if(pizzaIndex == 0){
+            alapAr = 1580;
+        }else if (pizzaIndex == 1){
+            alapAr = 1680;
+        }else if (pizzaIndex == 2){
+            alapAr = 1750;
+        }else if (pizzaIndex == 3){
+            alapAr = 2100;
+        }
+        
+        /*méret szorzót fel kell venni*/
+        double meretSzorzo = 1;
+        
+        int db = 1;
+        
+        int extra1 = 0;
+        int extra2 = 0;
+        int extra3 = 0;
+        int extrak = extra1 + extra2 + extra3;
+        
+        /*kéne nekünk egy végső ár is. Ha inttel írom, akkor nem lesz kompatibilis az előbbi double változóval. inteket nem tudjuk berakni doublebe. Ennek tehát doublenek kell lennie!!!*/
+        /*itt most utána az történik hogy: */
+        double vegsoAr = alapAr * meretSzorzo + extrak;
+        /*beszorzom db számmal:*/
+        vegsoAr *= db;
+        
+        lblAr.setText(vegsoAr + ""); /*ezt beállítjuk hogy induláskor ezt a szöveget lássuk a 0 helyett*/
+        /*itt utána ""be rakom hogy string legyen belőle*/
+        //ennyi, ez által induláskor számol.
+
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
     public static void main(String args[]) {
