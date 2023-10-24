@@ -5,7 +5,7 @@ public class PizzApp extends javax.swing.JFrame {
     public PizzApp() {
         initComponents();  /*ezután kell mert ez indítja a programot*/
         
-        /*létrehoizunk egy változót, hogypl mi az egyik pizzának az alapára, itt a 2-es indexen lévő pizzának az alapára kellene*/
+        /*1. létrehoizunk egy változót, hogypl mi az egyik pizzának az alapára, itt a 2-es indexen lévő pizzának az alapára kellene*/
         int alapAr2 = 1750;
         /*méret szorzót fel kell venni*/
         double meretSzorzo = 1;
@@ -25,7 +25,10 @@ public class PizzApp extends javax.swing.JFrame {
         
         lblAr.setText(vegsoAr + ""); /*ezt beállítjuk hogy induláskor ezt a szöveget lássuk a 0 helyett*/
         /*itt utána ""be rakom hogy string legyen belőle*/
+        //ennyi, ez által induláskor számol.
+        //ez a kód am nem jó , madj leírjuk jól is
         
+        //2. combobox ha változik, változik az ár a labelben: ugy, hogy a combobox actionperfbe írom
         
         
     }
@@ -65,6 +68,11 @@ public class PizzApp extends javax.swing.JFrame {
 
         cmdValaszthatoPizzak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Margherita", "Hawaii", "Songoku", "Diavola" }));
         cmdValaszthatoPizzak.setSelectedIndex(2);
+        cmdValaszthatoPizzak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdValaszthatoPizzakActionPerformed(evt);
+            }
+        });
 
         pnlMeret.setBorder(javax.swing.BorderFactory.createTitledBorder("Méret"));
 
@@ -237,6 +245,10 @@ public class PizzApp extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdValaszthatoPizzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValaszthatoPizzakActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
