@@ -1,6 +1,8 @@
 package pizzapp;
 
 public class PizzApp extends javax.swing.JFrame {
+    
+    double meretSzorzo = 1; //
 
     public PizzApp() {
         initComponents();  /*ezután kell mert ez indítja a programot*/
@@ -8,7 +10,7 @@ public class PizzApp extends javax.swing.JFrame {
         /*1. létrehoizunk egy változót, hogypl mi az egyik pizzának az alapára, itt a 2-es indexen lévő pizzának az alapára kellene*/
         int alapAr = 1750;
         /*méret szorzót fel kell venni*/
-        double meretSzorzo = 1;
+        meretSzorzo = 1;
         
         int db = 1;
         
@@ -78,10 +80,20 @@ public class PizzApp extends javax.swing.JFrame {
 
         buttonGroup1.add(rdbMeret25);
         rdbMeret25.setText("25 cm");
+        rdbMeret25.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rdbMeret25ItemStateChanged(evt);
+            }
+        });
 
         buttonGroup1.add(rdbMeret32);
         rdbMeret32.setSelected(true);
         rdbMeret32.setText("32 cm");
+        rdbMeret32.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rdbMeret32ItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMeretLayout = new javax.swing.GroupLayout(pnlMeret);
         pnlMeret.setLayout(pnlMeretLayout);
@@ -257,8 +269,7 @@ public class PizzApp extends javax.swing.JFrame {
         int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
         
        
-                
-                
+        //3.radiogombokkal ugyanez a variálás: item state changek
                 
         //1. választott pizza alapára:
         /*1. létrehoizunk egy változót, hogy pl mi az egyik pizzának az alapára, itt a 2-es indexen lévő pizzának az alapára kellene*/
@@ -275,7 +286,7 @@ public class PizzApp extends javax.swing.JFrame {
         }
         
         /*méret szorzót fel kell venni*/
-        double meretSzorzo = 1;
+        
         
         int db = 1;
         
@@ -302,6 +313,21 @@ public class PizzApp extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
+
+    private void rdbMeret25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret25ItemStateChanged
+        //meg kel szorozza a végső árnál az alapárat a mérettel tehát vagy 1el vagy 0,75-el
+        //előbbi képletekből kéne kiindulni
+        //kiszedtem előbbiből meretszorzot és ideraktam
+        //kell h mind3 blokk lássa ezt a változót, olyan helyen kel deklarálni, ahol mindenki eléri
+        //=> lilaszínűvé kell tenni, ollyan helyen maikívülvan a gombokon
+        //doubleket ki kell előlük törölni h mind lila legyen!
+        
+        meretSzorzo = 0.75;
+    }//GEN-LAST:event_rdbMeret25ItemStateChanged
+
+    private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
+        meretSzorzo = 1;
+    }//GEN-LAST:event_rdbMeret32ItemStateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
