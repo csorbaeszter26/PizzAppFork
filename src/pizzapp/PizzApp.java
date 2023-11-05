@@ -218,6 +218,11 @@ public class PizzApp extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txaOsszesito);
 
         btnRendel.setText("Megrendelem");
+        btnRendel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRendelActionPerformed(evt);
+            }
+        });
 
         lblOsszesito.setText("Összestő:");
 
@@ -234,7 +239,7 @@ public class PizzApp extends javax.swing.JFrame {
                     .addComponent(cmdValaszthatoPizzak, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlMeret, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRendel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlFizetendo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, Short.MAX_VALUE))
+                    .addComponent(pnlFizetendo, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
@@ -423,16 +428,41 @@ public class PizzApp extends javax.swing.JFrame {
 
     private void txaOsszesitoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txaOsszesitoPropertyChange
         
-        if (rdbMeret25.isSelected()){
-            String meret1;
-            meret1 = rdbMeret25.getText();
+        //int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
+        
+        //txaOsszesito.setText("A választott pizza: " + pizzaIndex + "(" + db + ")" );
+
+        //int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
+        //if (pizzaIndex == 0) {
+            //txaOsszesito.setText("A választott pizza: ");
+
+        //if (rdbMeret25.isSelected()){
+            //String meret1 = null;
+            //txaOsszesito.setText("A választott pizza: ");
+            //meret1 = rdbMeret25.getText();
             
             //setText("25cm, ");
-        }
+        //}
         
                 
                 
     }//GEN-LAST:event_txaOsszesitoPropertyChange
+
+    private void btnRendelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRendelActionPerformed
+
+        int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
+        //int pizzaMeret = rdbMeret25.hashCode();
+
+        int dbIndex = numDb.getModel().getValue().hashCode();
+
+        txaOsszesito.setText("A választott pizza: " + pizzaIndex + "(" + db + "db)" + "\n" + "mérete: " + meretSzorzo + "\n feltétek:" + "\n" + extrak);
+        
+
+        //if (pizzaIndex == 1) {
+            //replace("Hawaii");
+        //}
+
+    }//GEN-LAST:event_btnRendelActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
